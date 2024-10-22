@@ -62,6 +62,7 @@ class CustomForm extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
+
           //DateTime
           SetTime(),
 
@@ -284,16 +285,16 @@ class SetTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return const Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
+    return const Column(children: [
+      Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
           children: [
             DropdownTextField(),
           ],
-        )
-      ],
-    );
+        ),
+      ),
+    ]);
   }
 }
 
@@ -304,7 +305,7 @@ class DropdownTextField extends StatefulWidget {
   _DropdownTextFieldState createState() => _DropdownTextFieldState();
 }
 
-class _DropdownTextFieldState extends State<DropdownTextField>{
+class _DropdownTextFieldState extends State<DropdownTextField> {
   String? _startTime = '09:00 AM';
   String? _endTime = '11:00 AM';
   final List<String> _times = [
@@ -319,107 +320,106 @@ class _DropdownTextFieldState extends State<DropdownTextField>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Start time
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Start time',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey),
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          icon: const Icon(Icons.arrow_drop_down),
-                          style: const TextStyle(color: Colors.grey, fontSize: 17),
-                          value: _startTime,
-                          items: _times.map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (newValue) {
-                            setState(() {
-                              _startTime = newValue;
-                            });
-                          },
+      padding: const EdgeInsets.all(10),
+      child: Expanded(
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Start time
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Start time',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(width: 20,),
-              // End time
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Start time',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey),
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          icon: const Icon(Icons.arrow_drop_down),
-                          style: const TextStyle(color: Colors.grey, fontSize: 17),
-                          value: _endTime,
-                          items: _times.map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (newValue) {
-                            setState(() {
-                              _endTime = newValue;
-                            });
-                          },
+                      const SizedBox(height: 10),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: const Icon(Icons.keyboard_arrow_down, color: Colors.blue,size: 25,),
+                            style:
+                                const TextStyle(color: Colors.grey, fontSize: 17),
+                            value: _startTime,
+                            items: _times.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (newValue) {
+                              setState(() {
+                                _startTime = newValue;
+                              });
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                  // const SizedBox(width: 65,),
+                  // End time
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'End time',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: const Icon(Icons.keyboard_arrow_down, color: Colors.blue,size: 25,),
+                            style:
+                            const TextStyle(color: Colors.grey, fontSize: 17),
+                            value: _endTime,
+                            items: _times.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (newValue) {
+                              setState(() {
+                                _endTime = newValue;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
 
 // Descripton
 class DeScrIpTiOn extends StatelessWidget {
@@ -430,9 +430,6 @@ class DeScrIpTiOn extends StatelessWidget {
     // TODO: implement build
     return Column(
       children: [
-        const SizedBox(
-          height: 20,
-        ),
         // Task Name
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0),
@@ -475,7 +472,7 @@ class DeScrIpTiOn extends StatelessWidget {
 }
 
 // Button Create Task
-class BtnCreateTask extends StatelessWidget{
+class BtnCreateTask extends StatelessWidget {
   const BtnCreateTask({super.key});
 
   @override
@@ -488,8 +485,10 @@ class BtnCreateTask extends StatelessWidget{
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue, // Background color
-            padding: const EdgeInsets.symmetric(vertical: 16), // Padding for height
+            backgroundColor: Colors.blue,
+            // Background color
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            // Padding for height
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12), // Rounded corners
             ),

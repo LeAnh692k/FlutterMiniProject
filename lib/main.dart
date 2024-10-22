@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
 import 'Pages/WelcomeScreen.dart';
 import 'Pages/CreateTaskPage.dart';
-import 'main.dart';
+// import 'main.dart';
 
 void main() {
   runApp(const MyApp());
